@@ -45,10 +45,6 @@ BlogPostPageTemplate.propTypes = {
 }
 
 const BlogPostPage = ({ data }) => {
-  console.log("data");
-  console.log(data.allMarkdownRemark.edges);
-  console.log("map call on posts")
-  console.log(data.allMarkdownRemark.edges.map(({ node: post }) => (console.log(post))))
   const { edges } = data.allMarkdownRemark
   return (
     <Layout>

@@ -1,21 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Layout from '../components/Layout'
 import Features from '../components/Features'
 import Testimonials from '../components/Testimonials'
 import Pricing from '../components/Pricing'
+import { StaticQuery, graphql } from 'gatsby'
 
-export const IndexPageTemplate = ({
-  image,
-  title,
-  heading,
-  description,
-  intro,
-  main,
-  testimonials,
-  fullImage,
-  pricing,
-}) => (
+const IndexPage = ({ data }) => (
   <section className="section section--gradient">
     <div className="container">
       <div className="section">
@@ -24,7 +14,7 @@ export const IndexPageTemplate = ({
             <div className="content">
               <div
                 className="full-width-image-container margin-top-0"
-                style={{ backgroundImage: `url(${image})` }}
+                style={{ backgroundImage: `url(${data.allMarkdownRemark.edges[0].node.frontmatter.image})` }}
               >
                 <h2
                   className="has-text-weight-bold is-size-1"
@@ -35,24 +25,24 @@ export const IndexPageTemplate = ({
                     padding: '1rem',
                   }}
                 >
-                  {title}
+                  {data.allMarkdownRemark.edges[0].node.frontmatter.title}
                 </h2>
               </div>
               <div className="columns">
                 <div className="column is-7">
                   <h3 className="has-text-weight-semibold is-size-2">
-                    {heading}
+                    {data.allMarkdownRemark.edges[0].node.frontmatter.heading}
                   </h3>
-                  <p>{description}</p>
+                  <p>{data.allMarkdownRemark.edges[0].node.frontmatter.description}</p>
                 </div>
               </div>
-              <Features gridItems={intro.blurbs} />
+              <Features gridItems={data.allMarkdownRemark.edges[0].node.frontmatter.intro.blurbs} />
               <div className="columns">
                 <div className="column is-7">
                   <h3 className="has-text-weight-semibold is-size-3">
-                    {main.heading}
+                    {data.allMarkdownRemark.edges[0].node.frontmatter.main.heading}
                   </h3>
-                  <p>{main.description}</p>
+                  <p>{data.allMarkdownRemark.edges[0].node.frontmatter.main.description}</p>
                 </div>
               </div>
               <div className="tile is-ancestor">
@@ -62,8 +52,8 @@ export const IndexPageTemplate = ({
                       <article className="tile is-child">
                         <img
                           style={{ borderRadius: '5px' }}
-                          src={main.image1.image}
-                          alt={main.image1.alt}
+                          src={data.allMarkdownRemark.edges[0].node.frontmatter.main.image1.image}
+                          alt={data.allMarkdownRemark.edges[0].node.frontmatter.main.image1.alt}
                         />
                       </article>
                     </div>
@@ -71,8 +61,8 @@ export const IndexPageTemplate = ({
                       <article className="tile is-child">
                         <img
                           style={{ borderRadius: '5px' }}
-                          src={main.image2.image}
-                          alt={main.image2.alt}
+                          src={data.allMarkdownRemark.edges[0].node.frontmatter.main.image2.image}
+                          alt={data.allMarkdownRemark.edges[0].node.frontmatter.main.image2.alt}
                         />
                       </article>
                     </div>
@@ -81,23 +71,23 @@ export const IndexPageTemplate = ({
                     <article className="tile is-child">
                       <img
                         style={{ borderRadius: '5px' }}
-                        src={main.image3.image}
-                        alt={main.image3.alt}
+                        src={data.allMarkdownRemark.edges[0].node.frontmatter.main.image3.image}
+                        alt={data.allMarkdownRemark.edges[0].node.frontmatter.main.image3.alt}
                       />
                     </article>
                   </div>
                 </div>
               </div>
-              <Testimonials testimonials={testimonials} />
+              <Testimonials testimonials={data.allMarkdownRemark.edges[0].node.frontmatter.testimonials} />
               <div
                 className="full-width-image-container"
-                style={{ backgroundImage: `url(${fullImage})` }}
+                style={{ backgroundImage: `url(${data.allMarkdownRemark.edges[0].node.frontmatter.full_image})` }}
               />
               <h2 className="has-text-weight-semibold is-size-2">
-                {pricing.heading}
+                {data.allMarkdownRemark.edges[0].node.frontmatter.pricing.heading}
               </h2>
-              <p className="is-size-5">{pricing.description}</p>
-              <Pricing data={pricing.plans} />
+              <p className="is-size-5">{data.allMarkdownRemark.edges[0].node.frontmatter.pricing.description}</p>
+              <Pricing data={data.allMarkdownRemark.edges[0].node.frontmatter.pricing.plans} />
             </div>
           </div>
         </div>
@@ -106,7 +96,74 @@ export const IndexPageTemplate = ({
   </section>
 )
 
-IndexPageTemplate.propTypes = {
+export default props => (
+  <StaticQuery
+    query={
+      graphql`
+        query IndexPage {
+          allMarkdownRemark(
+            filter: { frontmatter: { templateKey: { eq: "index-page" } } }
+          ) {
+            edges {
+              node {
+                frontmatter {
+                  title
+                  image
+                  heading
+                  description
+                  intro {
+                    blurbs {
+                      image
+                      text
+                    }
+                    heading
+                    description
+                  }
+                  main {
+                    heading
+                    description
+                    image1 {
+                      alt
+                      image
+                    }
+                    image2 {
+                      alt
+                      image
+                    }
+                    image3 {
+                      alt
+                      image
+                    }
+                  }
+                  testimonials {
+                    author
+                    quote
+                  }
+                  full_image
+                  pricing {
+                    heading
+                    description
+                    plans {
+                      description
+                      items
+                      plan
+                      price
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        `
+    }
+    render={ data => 
+      <IndexPage data={data} {...props} />
+    }
+  />
+);
+
+IndexPage.propTypes = {
   image: PropTypes.string,
   title: PropTypes.string,
   heading: PropTypes.string,
@@ -129,36 +186,3 @@ IndexPageTemplate.propTypes = {
     plans: PropTypes.array,
   }),
 }
-
-const IndexPage = ({ data }) => {
-  console.log("data in index page")
-  console.log(data)
-  console.log("index page allMarkdownRemark")
-  console.log(data.data.allMarkdownRemark)
-  const { frontmatter } = data.data.allMarkdownRemark.edges[0].node
-  return (
-    <Layout>
-      <IndexPageTemplate
-        image={frontmatter.image}
-        title={frontmatter.title}
-        heading={frontmatter.heading}
-        description={frontmatter.description}
-        intro={frontmatter.intro}
-        main={frontmatter.main}
-        testimonials={frontmatter.testimonials}
-        fullImage={frontmatter.full_image}
-        pricing={frontmatter.pricing}
-      />
-    </Layout>
-  )
-}
-
-IndexPage.propTypes = {
-  data: PropTypes.shape({
-    markdownRemark: PropTypes.shape({
-      frontmatter: PropTypes.object,
-    }),
-  }),
-}
-
-export default IndexPage
