@@ -1,7 +1,6 @@
 ---
-templateKey: 'index-page'
-path: /
-title: Our Coffee
+templateKey: index-page
+title: New Site
 image: /img/jumbotron.jpg
 heading: What we offer
 description: >-
@@ -92,3 +91,4 @@ pricing:
       plan: Custom
       price: '??'
 ---
+
