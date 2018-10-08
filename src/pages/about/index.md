@@ -12,17 +12,17 @@ Justo laoreet sit amet cursus sit amet dictum sit amet. Sit amet porttitor eget 
 
 You can add links like <https://google.com> or you can add 
 
-* bulleted lists
-* item 2
-
 1. Numbered lists
 2. etc.
 
 **Bold**
 
+* non numbered list
+* list item 2
+
 _Italicized_
 
-`Text inside of a code block  `
+`Text inside of a code block`
 
 > A Quote will go here
 
