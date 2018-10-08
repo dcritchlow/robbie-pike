@@ -1,41 +1,36 @@
 ---
 templateKey: index-page
 title: New Site
-image: /img/jumbotron.jpg
-heading: What we offer
+image: /img/grays-and-torreys-peak.jpg
+heading: Running...or some other heading you want
 description: >-
-  Kaldi is the ultimate spot for coffee lovers who want to learn about their
-  java’s origin and support the farmers that grew it. We take coffee production,
-  roasting and brewing seriously and we’re glad to pass that knowledge to
-  anyone.
+  This is where you can describe your site. The rest of this text is just
+  filling space. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet tellus
+  cras adipiscing enim eu turpis egestas. In arcu cursus euismod quis viverra
+  nibh cras. Purus in mollis nunc sed id semper. 
 intro:
   blurbs:
-    - image: /img/coffee.png
+    - image: /img/minimal-grayscale-mountains.jpg
       text: >
-        We sell green and roasted coffee beans that are sourced directly from
-        independent farmers and farm cooperatives. We’re proud to offer a
-        variety of coffee beans grown with great care for the environment and
-        local communities. Check our post or contact us directly for current
-        availability.
-    - image: /img/coffee-gear.png
-      text: >
-        We offer a small, but carefully curated selection of brewing gear and
-        tools for every taste and experience level. No matter if you roast your
-        own beans or just bought your first french press, you’ll find a gadget
-        to fall in love with in our shop.
-    - image: /img/tutorials.png
-      text: >
-        Love a great cup of coffee, but never knew how to make one? Bought a
-        fancy new Chemex but have no clue how to use it? Don't worry, we’re here
-        to help. You can schedule a custom 1-on-1 consultation with our baristas
-        to learn anything you want to know about coffee roasting and brewing.
-        Email us or call the store for details.
-  heading: What we offer
+        Some text here. Running uphill to the top of mountain peaks etc.
+        Dictumst quisque sagittis purus sit amet. Lacus sed viverra tellus in
+        hac habitasse platea dictumst. Tellus at urna condimentum mattis. 
+    - image: /img/grayscale-new-balance.jpeg
+      text: >-
+        Same as the other one. Describe the shoes or the sponsorship you have
+        etc. Nibh tellus molestie nunc non blandit massa enim. Vulputate odio ut
+        enim blandit.
+    - image: /img/grayscale-dumbbell.png
+      text: >-
+        Talk about your personal training or etc. Sit amet tellus cras
+        adipiscing enim eu turpis egestas. In arcu cursus euismod quis viverra
+        nibh cras.
+  heading: Heading describing your intro
   description: >
-    Kaldi is the ultimate spot for coffee lovers who want to learn about their
-    java’s origin and support the farmers that grew it. We take coffee
-    production, roasting and brewing seriously and we’re glad to pass that
-    knowledge to anyone. This is an edit via identity...
-
+    Small paragraph describing your introduction. Justo laoreet sit amet cursus
+    sit amet dictum sit amet. Sit amet porttitor eget dolor morbi non arcu
+    risus. Ultrices dui sapien eget mi proin sed. Duis tristique sollicitudin
+    nibh sit.
 ---
 
